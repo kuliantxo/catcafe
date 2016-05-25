@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Cat Cafe: treats for your tabby!</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <img id="head-cat" src="images/headercat.jpg">
+      <h1>Welcome to Cat Cafe!</h1>
+    </header>
+    <section id="cashier">
+      <p id="tagline">Here we sell the sweetest treats for your feline friend. Come spend time in Cat-topia.</p>
+      <form id="cash-calculator">
+        <div class="cash-line">
+          <input id="amountCharged" name="amountCharged" type="text" placeholder="We need">
+        </div>
+        <div class="cash-line">
+          <input id="amountTendered" name="amountTendered" type="text" placeholder="You pay">
+        </div>
+        <button id="calculate" type="submit">Calculate Change</button>
+      </form>
+
+      <div id="results">
+        <!-- Place your HTML inside this element -->
+      </div>
+
+    </section>
+    <script src="js/app.js"></script>
+  </body>
+</html>
