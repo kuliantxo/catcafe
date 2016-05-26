@@ -72,3 +72,12 @@ button#calculate:hover {
 }
 
 // Add your CSS below this line
+
+#results {
+	width: 400px;
+	margin: 0 auto;
+}
+
+.change-box {
+	float: left;
+}
