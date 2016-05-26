@@ -8,29 +8,31 @@ var onCalculatePressed = function(e) {
   // Add your hooks, call to calculateChange, and DOM manipulations here
   // ---
 
-  var t = $( "#amountTendered" ).val(),
-      c = $( "#amountCharged" ).val(),
-      r = calculateChange(c, t);
-
   if ($( "#amountCharged" ).valid() && $( "#amountTendered" ).valid())
   {
      // do some stuff
      console.log('valid');
+
+     var t = $( "#amountTendered" ).val(),
+         c = $( "#amountCharged" ).val(),
+         r = calculateChange(parseFloat(c), parseFloat(t));
+
+     if($.isEmptyObject(r)) {
+       renderFortune();
+     } else {
+       renderChange(r);
+     }
   }
   else
   {
      // just show validation errors, dont post
      console.log('not valid');
   }
-
-
-  if($.isEmptyObject(r)) {
-    renderFortune();
-  } else {
-    renderChange(r);
-  }
 };
 
+/* Render fortune results
+**
+*/
 var renderFortune = function() {
   $.getJSON('http://fortunecookieapi.com/v1/cookie', function(view) {
     $.get("tmpl/fortune.mustache", function(template) {
@@ -40,9 +42,15 @@ var renderFortune = function() {
   });
 };
 
-var renderChange = function(r) {
+/* Render change ammounts
+**
+** Arguments: An object composed of keys in Mewla denominations (i.e. 1, 3, 7, 21, 33, 100) and values
+**          corresponding to the number of coins owed in each denomination.
+**
+*/
+var renderChange = function(ammountChange) {
   $.get("tmpl/change.mustache", function(template) {
-    var results = $.mustache(template, r);
+    var results = $.mustache(template, ammountChange);
     $("#results").html(results);
   });
 };
@@ -63,8 +71,8 @@ var calculateChange = function(amountCharged, amountTendered) {
   // Implement your change-calculating logic here
   // ---
 
-  var t = parseInt(amountTendered),
-      c = parseInt(amountCharged);
+  var t = amountTendered,
+      c = amountCharged;
 
   if(c != t) {
     changeOwed = {1: 0, 3: 0, 7: 0, 21: 0, 33: 0, 100: 0};
@@ -97,8 +105,12 @@ var calculateChange = function(amountCharged, amountTendered) {
     }
   }
 
+  console.log(changeOwed);
   return changeOwed;
 };
+
+// Display cat image on header
+$('#head-cat').src('images/headercat' + Math.floor((Math.random() * 4) + 1); + '.jpg');
 
 // Hook up the function to the change button. jQuery is already included!
 $("#calculate").click(onCalculatePressed);
