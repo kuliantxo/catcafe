@@ -71,11 +71,14 @@ button#calculate:hover {
   width: 160px;
 }
 
-// Add your CSS below this line
+/* Add your CSS below this line */
 
 #results {
 	width: 400px;
 	margin: 0 auto;
+	background: #CCC;
+  overflow: auto;
+  zoom: 1;
 }
 
 .change-box {
