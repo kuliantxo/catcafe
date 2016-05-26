@@ -73,20 +73,53 @@ button#calculate:hover {
 
 /* Add your CSS below this line */
 
-#results {
+.cash-line {
+  text-align: left;
+  position: relative;
+}
+.cash-line small {
+  position: absolute;
+  top: 10px;
+  right: 40px
+}
+
+.cash-line label:first-of-type {
+  font-size: 20px;
+  width: 140px;
+  display: inline-block;
+  margin-right: 10px;
+  float: none;
+}
+
+label.error {
+  color: red;
+  font-size: 14px;
+  margin-left: 140px;
+  display: block;
+}
+
+.results {
 	width: 400px;
 	margin: 0 auto;
-	background: #CCC;
+	background: #ebf8fb;
   overflow: auto;
   zoom: 1;
   text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 2px;
 }
 
 .change-boxes {
+  padding: 10px;
 }
 
 .change-box {
 	display: inline-block;
 	margin: 0 10px;
-	background: yellow;
+	background: white;
+  padding: 10px;
+}
+
+.change-box .amount {
+  font-size: 40px;
 }

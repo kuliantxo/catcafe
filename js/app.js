@@ -12,6 +12,18 @@ var onCalculatePressed = function(e) {
       c = $( "#amountCharged" ).val(),
       r = calculateChange(c, t);
 
+  if ($( "#amountCharged" ).valid() && $( "#amountTendered" ).valid())
+  {
+     // do some stuff
+     console.log('valid');
+  }
+  else
+  {
+     // just show validation errors, dont post
+     console.log('not valid');
+  }
+
+
   if($.isEmptyObject(r)) {
     renderFortune();
   } else {
@@ -23,7 +35,7 @@ var renderFortune = function() {
   $.getJSON('http://fortunecookieapi.com/v1/cookie', function(view) {
     $.get("tmpl/fortune.mustache", function(template) {
       var results = $.mustache(template, view[0].fortune);
-      $("#results").append(results);
+      $("#results").html(results);
     });
   });
 };
@@ -31,7 +43,7 @@ var renderFortune = function() {
 var renderChange = function(r) {
   $.get("tmpl/change.mustache", function(template) {
     var results = $.mustache(template, r);
-    $("#results").append(results);
+    $("#results").html(results);
   });
 };
 
