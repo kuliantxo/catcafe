@@ -110,7 +110,7 @@ var calculateChange = function(amountCharged, amountTendered) {
 };
 
 // Display cat image on header
-$('#head-cat').src('images/headercat' + Math.floor((Math.random() * 4) + 1); + '.jpg');
+$('#head-cat').attr('src', 'images/headercat' + Math.floor((Math.random() * 4) + 1) + '.jpg');
 
 // Hook up the function to the change button. jQuery is already included!
 $("#calculate").click(onCalculatePressed);

@@ -34,7 +34,19 @@
     </section>
     <script src="js/app.js"></script>
     <script>
-      $("#cash-calculator").validate();
+      $.validator.addMethod("greaterThanZero", function(value, element) {
+          return (value >= $( "#amountCharged" ).val());
+        return false;
+      }, 'Amount must be equial or greater than "We need"');
+
+      $('#cash-calculator').validate({
+          rules : {
+              amountTendered : { greaterThanZero : true }
+          }
+      });
+
+
+//      $("#cash-calculator").validate();
     </script>
   </body>
 </html>
