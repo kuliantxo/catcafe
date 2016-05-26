@@ -8,22 +8,31 @@ var onCalculatePressed = function(e) {
   // Add your hooks, call to calculateChange, and DOM manipulations here
   // ---
 
-  console.log(calculateChange($( "#amountCharged" ).val(), $( "#amountTendered" ).val()));
+  var t = $( "#amountTendered" ).val(),
+      c = $( "#amountCharged" ).val(),
+      r = calculateChange(c, t);
 
-/*
-  var template = $.get('../templates/article.mustache');
-  $.getJSON('http://fortunecookieapi.com/v1/cookie', function(view) {
-      var html = Mustache.to_html(template, view);
-      $("#content").append(html);
-  });
-*/
+  if($.isEmptyObject(r)) {
+    renderFortune();
+  } else {
+    renderChange(r);
+  }
+};
+
+var renderFortune = function() {
   $.getJSON('http://fortunecookieapi.com/v1/cookie', function(view) {
     $.get("tmpl/fortune.mustache", function(template) {
       var results = $.mustache(template, view[0].fortune);
       $("#results").append(results);
     });
   });
+};
 
+var renderChange = function(r) {
+  $.get("tmpl/change.mustache", function(template) {
+    var results = $.mustache(template, r);
+    $("#results").append(results);
+  });
 };
 
 /* Does the caculation of change owed to the customer.
@@ -46,7 +55,7 @@ var calculateChange = function(amountCharged, amountTendered) {
       c = parseInt(amountCharged);
 
   if(c != t) {
-    changeOwed = {1: 0, 3: 0, 7: 0, 33: 0, 100: 0};
+    changeOwed = {1: 0, 3: 0, 7: 0, 21: 0, 33: 0, 100: 0};
     while (t > c) {
       if ((t - c) > 100 ) {
         console.log(100);
@@ -56,6 +65,10 @@ var calculateChange = function(amountCharged, amountTendered) {
         console.log(33);
         changeOwed[33] += 1;
         t -= 33;
+      } else if ((t - c) > 21 ) {
+        console.log(21);
+        changeOwed[21] += 1;
+        t -= 7;
       } else if ((t - c) > 7 ) {
         console.log(7);
         changeOwed[7] += 1;
