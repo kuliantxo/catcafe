@@ -79,8 +79,14 @@ button#calculate:hover {
 	background: #CCC;
   overflow: auto;
   zoom: 1;
+  text-align: center;
+}
+
+.change-boxes {
 }
 
 .change-box {
-	float: left;
+	display: inline-block;
+	margin: 0 10px;
+	background: yellow;
 }
