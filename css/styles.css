@@ -111,17 +111,19 @@ label.error {
   text-align: center;
   border: 1px solid #aaa;
   border-radius: 4px;
-  padding: 15px;
+  padding: 15px 10px;
 }
 
 .results-fortune p {
-  margin-bottom: 0;
+	margin-top: 30px;
+  margin-bottom: 6px;
   color: #aaa;
 }
 
 .results h2 {
   margin-top: 0;
   font-weight: 400;
+  margin-bottom: 10px;
 }
 
 .results-fortune h3 {
@@ -134,9 +136,9 @@ label.error {
 
 .change-box {
 	display: inline-block;
-	margin: 10px;
+	margin: 10px 2px;
 	background: white;
-  padding: 10px 20px;
+	padding: 4px 26px;
 }
 
 .change-box .ammount {
@@ -145,5 +147,5 @@ label.error {
 }
 
 .change-box small {
-  color: #ccc;
+  color: #aaa;
 }
